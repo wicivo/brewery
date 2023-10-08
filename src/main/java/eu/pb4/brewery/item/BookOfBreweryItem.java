@@ -54,31 +54,6 @@ public class BookOfBreweryItem extends Item implements PolymerItem {
 
         var container = FabricLoader.getInstance().getModContainer(BreweryInit.MOD_ID).get();
 
-        {
-            var contributors = new ArrayList<String>();
-            contributors.addAll(container.getMetadata().getAuthors().stream().map((p) -> p.getName()).collect(Collectors.toList()));
-            contributors.addAll(container.getMetadata().getContributors().stream().map((p) -> p.getName()).collect(Collectors.toList()));
-
-            builder.addPage(
-                    Text.empty(),
-                    Text.empty().append(Text.translatable("item.brewery.book_of_brewery").formatted(Formatting.BOLD, Formatting.UNDERLINE, Formatting.DARK_BLUE))
-                            .append(Text.literal(" \uD83E\uDDEA").formatted(Formatting.DARK_RED)),
-                    Text.empty(),
-                    Text.translatable("text.brewery.about.version").formatted(Formatting.DARK_GREEN)
-                            .append(Text.literal(container.getMetadata().getVersion().getFriendlyString()).setStyle(Style.EMPTY.withColor(Formatting.DARK_GRAY))),
-                    Text.empty(),
-                    Text.literal("")
-                            .append(Text.translatable("[%s]", Text.translatable("text.brewery.about.contributors"))
-                                    .setStyle(Style.EMPTY.withColor(Formatting.DARK_AQUA)
-                                            .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
-                                                    Text.literal(String.join(", ", contributors)
-                                                    ))
-                                            )))
-                            .append("")
-                            .setStyle(Style.EMPTY.withColor(Formatting.DARK_GRAY))
-            );
-        }
-
         builder.addPage(
                 Text.translatable("polydex.brewery.cooking_cauldron").formatted(Formatting.BOLD, Formatting.UNDERLINE, Formatting.GREEN),
                 Text.empty(),
